@@ -145,7 +145,7 @@ function errorMessage(error: unknown) {
   return error instanceof Error ? error.message : "Something went wrong. Please try again.";
 }
 
-function AuthenticationPanel() {
+function AuthenticationPanel({ disabled = false }: Readonly<{ disabled?: boolean }>) {
   const { sendOTP, verifyOTP } = useTiquo();
   const [phase, setPhase] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
@@ -155,6 +155,7 @@ function AuthenticationPanel() {
 
   async function handleSend(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (disabled) return;
     setBusy(true);
     setError(null);
     try {
@@ -169,6 +170,7 @@ function AuthenticationPanel() {
 
   async function handleVerify(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (disabled) return;
     setBusy(true);
     setError(null);
     try {
@@ -211,7 +213,7 @@ function AuthenticationPanel() {
                   autoFocus
                 />
                 {error && <p className="form-error" role="alert">{error}</p>}
-                <button className="button button--dark" disabled={busy}>
+                <button className="button button--dark" disabled={disabled || busy}>
                   {busy ? "Sending…" : "Send my sign-in code"}
                 </button>
               </form>
@@ -238,7 +240,10 @@ function AuthenticationPanel() {
                   autoFocus
                 />
                 {error && <p className="form-error" role="alert">{error}</p>}
-                <button className="button button--dark" disabled={busy || code.length !== 6}>
+                <button
+                  className="button button--dark"
+                  disabled={disabled || busy || code.length !== 6}
+                >
                   {busy ? "Checking…" : "Open my profile"}
                 </button>
                 <button
@@ -366,14 +371,6 @@ export function MemberPortal() {
     return () => URL.revokeObjectURL(profilePhotoPreview);
   }, [profilePhotoPreview]);
 
-  if (status === "unconfigured") {
-    return (
-      <main className="portal-unconfigured">
-        <p role="alert">The Tiquo Website SDK Public Key needs to be set</p>
-      </main>
-    );
-  }
-
   if (status === "loading") {
     return (
       <main className="portal-loading" aria-live="polite">
@@ -384,7 +381,9 @@ export function MemberPortal() {
     );
   }
 
-  if (status === "signed-out") return <AuthenticationPanel />;
+  if (status === "signed-out" || status === "unconfigured") {
+    return <AuthenticationPanel disabled={status === "unconfigured"} />;
+  }
 
   const visibleBookings = bookings;
   const visibleOrders = orders;

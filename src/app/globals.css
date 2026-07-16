@@ -59,6 +59,33 @@ a {
   pointer-events: none;
 }
 
+.site-header--with-configuration-bar {
+  top: 62px;
+}
+
+.tiquo-configuration-bar {
+  position: fixed;
+  z-index: 110;
+  inset: 0 0 auto;
+  min-height: 44px;
+  padding: 8px 20px;
+  background: var(--acid);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-bottom: 1px solid rgba(23, 25, 22, 0.22);
+  font-size: 11px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.tiquo-configuration-bar strong {
+  font-weight: 700;
+}
+
 .site-header__inner {
   width: var(--shell);
   min-height: 58px;
@@ -686,6 +713,19 @@ a {
     top: 10px;
   }
 
+  .site-header--with-configuration-bar {
+    top: 62px;
+  }
+
+  .tiquo-configuration-bar {
+    min-height: 52px;
+    padding-inline: 12px;
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 2px 5px;
+    font-size: 10px;
+  }
+
   .site-header__inner {
     min-height: 52px;
     padding-left: 14px;
@@ -799,25 +839,6 @@ a {
 }
 
 /* Member profile */
-.portal-unconfigured {
-  min-height: 100svh;
-  padding: 112px 24px 32px;
-  background: #e9e6de;
-  display: grid;
-  place-items: center;
-}
-
-.portal-unconfigured p {
-  max-width: 560px;
-  margin: 0;
-  padding: 16px 20px;
-  border: 1px solid rgba(23, 25, 22, 0.18);
-  background: var(--acid);
-  font-size: 14px;
-  line-height: 1.5;
-  text-align: center;
-}
-
 .portal-loading {
   min-height: 100svh;
   background: var(--ink);
@@ -960,8 +981,10 @@ a {
 }
 
 .auth-form .button:disabled {
-  cursor: wait;
-  opacity: 0.55;
+  cursor: not-allowed;
+  background: #d7d7d2;
+  color: #77796f;
+  opacity: 1;
   transform: none;
 }
 

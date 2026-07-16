@@ -16,9 +16,12 @@ const navigation = [
 export function SiteHeader() {
   const pathname = usePathname();
   const { status } = useTiquo();
+  const isUnconfigured = status === "unconfigured";
 
   return (
-    <header className="site-header">
+    <header
+      className={`site-header${isUnconfigured ? " site-header--with-configuration-bar" : ""}`}
+    >
       <div className="site-header__inner">
         <Link href="/" className="site-header__brand">
           <BrandMark />

@@ -22,7 +22,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-When the Website SDK public key is not configured, the profile page displays a configuration alert instead of placeholder member data. To use authentication and live customer data, replace the placeholder in `.env.local`:
+When the Website SDK public key is not configured, every page displays a slim configuration bar and the profile login actions remain disabled. To use authentication and live customer data, replace the placeholder in `.env.local`:
 
 ```bash
 NEXT_PUBLIC_TIQUO_PUBLIC_KEY=pk_dom_your_key_here

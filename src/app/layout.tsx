@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import { SiteHeader } from "@/components/site-header";
+import { TiquoConfigurationBar } from "@/components/tiquo-configuration-bar";
 import { TiquoProvider } from "@/components/tiquo-provider";
 
 import "./globals.css";
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body className={inter.variable}>
         <TiquoProvider>
+          <TiquoConfigurationBar />
           <SiteHeader />
           {children}
         </TiquoProvider>
