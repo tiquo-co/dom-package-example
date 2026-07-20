@@ -9,8 +9,10 @@ import { useTiquo } from "@/components/tiquo-provider";
 const navigation = [
   { href: "/#experiences", label: "Industries" },
   { href: "/#integration", label: "Features" },
-  { href: "/booking", label: "Make a booking" },
+  { href: "/booking", label: "Booking" },
   { href: "/order-pick-up", label: "Order/Pick Up" },
+  { href: "/form", label: "Form" },
+  { href: "/membership", label: "Membership" },
 ];
 
 export function SiteHeader() {
