@@ -650,7 +650,9 @@ a {
 
 .form-widget {
   width: 100%;
+  max-width: 670px;
   min-height: clamp(620px, 78svh, 960px);
+  margin-inline: auto;
 }
 
 .form-widget iframe {
@@ -687,7 +689,9 @@ a {
 
 .ordering-widget {
   width: 100%;
+  max-width: 670px;
   min-height: clamp(620px, 78svh, 960px);
+  margin-inline: auto;
 }
 
 .ordering-widget iframe {
@@ -703,7 +707,6 @@ a {
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 4px;
-  background: var(--white);
 }
 
 .ordering-widget__fallback p {

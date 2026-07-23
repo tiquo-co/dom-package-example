@@ -15,6 +15,7 @@ export default function FormPage() {
       title="Customer feedback"
       description="Share your experience and submit your feedback through the form below."
       frameTitle="Customer Feedback Form"
+      className="embed-page--booking"
     >
       <TiquoFormWidget />
     </EmbedPlaceholderPage>

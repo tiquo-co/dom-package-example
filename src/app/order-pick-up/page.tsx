@@ -15,6 +15,7 @@ export default function OrderPickUpPage() {
       title="Order/Pick Up"
       description="Browse the menu, place an order, and choose a collection time through the ordering flow below."
       frameTitle="Order and pick-up iframe"
+      className="embed-page--booking"
     >
       <TiquoOrderingWidget />
     </EmbedPlaceholderPage>
