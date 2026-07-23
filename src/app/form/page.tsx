@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 
 import { EmbedPlaceholderPage } from "@/components/embed-placeholder-page";
+import { TiquoFormWidget } from "@/components/tiquo-form-widget";
 
 export const metadata: Metadata = {
-  title: "Form",
-  description: "Complete a form through the Tiquo Example embedded experience.",
+  title: "Customer Feedback Form",
+  description: "Share feedback through the Tiquo Example embedded form.",
 };
 
 export default function FormPage() {
   return (
     <EmbedPlaceholderPage
       eyebrow="Forms"
-      title="Form"
-      description="Complete and submit the form through the embedded flow below."
-      frameTitle="Form iframe"
-    />
+      title="Customer feedback"
+      description="Share your experience and submit your feedback through the form below."
+      frameTitle="Customer Feedback Form"
+    >
+      <TiquoFormWidget />
+    </EmbedPlaceholderPage>
   );
 }
