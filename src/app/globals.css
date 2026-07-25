@@ -689,7 +689,7 @@ a {
 
 .ordering-widget {
   width: 100%;
-  max-width: 670px;
+  max-width: 1300px;
   min-height: clamp(620px, 78svh, 960px);
   margin-inline: auto;
 }
