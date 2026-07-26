@@ -10,6 +10,7 @@ const navigation = [
   { href: "/#experiences", label: "Industries" },
   { href: "/#integration", label: "Features" },
   { href: "/booking", label: "Booking" },
+  { href: "/booking-embedded", label: "Booking Embedded" },
   { href: "/order-pick-up", label: "Order/Pick Up" },
   { href: "/form", label: "Form" },
   { href: "/membership", label: "Membership" },

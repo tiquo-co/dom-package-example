@@ -8,7 +8,7 @@ The visual direction takes broad inspiration from the supplied Webflow reference
 
 - Next.js `16.2.10` — latest stable release on 14 July 2026 (16.3 is still a preview)
 - React / React DOM `19.2.7`
-- Tiquo DOM Package `1.6.1`
+- Tiquo DOM Package `1.6.3`
 - TypeScript `6.0.3` — newest release supported by the current Next.js ESLint parser
 - ESLint `9.39.5` with Next.js Core Web Vitals and TypeScript rules
 
@@ -39,7 +39,7 @@ The `pk_dom_` key is intentionally public and is bundled into the browser. Do no
 - `src/components/trackable-link.tsx` demonstrates custom first-party analytics events while the SDK records pageviews automatically.
 - `src/app/profile/page.tsx` is statically rendered and hands interactive customer work to client components, keeping the public marketing page server-rendered by default.
 
-The live package published to npm currently exposes `TiquoAuth`, while the newest documentation refers to the main class as `Tiquo` and states that `TiquoAuth` remains supported for compatibility. This example imports the export that actually exists in `@tiquo/dom-package@1.6.1`, so it builds against the published package without type shims.
+The integration uses the package's primary `Tiquo` class. `TiquoAuth` remains available as a backwards-compatible alias for older integrations.
 
 ## Checks
 

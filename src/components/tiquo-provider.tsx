@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 import {
-  TiquoAuth,
+  Tiquo,
   type TiquoSession,
   type VerifyOTPResult,
 } from "@tiquo/dom-package";
@@ -17,7 +17,7 @@ import {
 export type TiquoStatus = "loading" | "signed-out" | "signed-in" | "unconfigured";
 
 type TiquoContextValue = {
-  client: TiquoAuth | null;
+  client: Tiquo | null;
   session: TiquoSession | null;
   status: TiquoStatus;
   sendOTP: (email: string) => Promise<void>;
@@ -35,7 +35,7 @@ const hasUsableKey = Boolean(
 );
 
 export function TiquoProvider({ children }: Readonly<{ children: React.ReactNode }>) {
-  const [client, setClient] = useState<TiquoAuth | null>(null);
+  const [client, setClient] = useState<Tiquo | null>(null);
   const [session, setSession] = useState<TiquoSession | null>(null);
   const [status, setStatus] = useState<TiquoStatus>(hasUsableKey ? "loading" : "unconfigured");
 
@@ -44,7 +44,7 @@ export function TiquoProvider({ children }: Readonly<{ children: React.ReactNode
       return;
     }
 
-    const tiquo = new TiquoAuth({
+    const tiquo = new Tiquo({
       publicKey,
       analytics: true,
       enableTabSync: true,
