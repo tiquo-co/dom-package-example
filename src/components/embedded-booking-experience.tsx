@@ -573,16 +573,18 @@ export function EmbeddedBookingExperience() {
                 />
                 <div className="booking-embedded__details-copy">
                   <div className="booking-embedded__badges">
-                    {selectedCategory && (
-                      <span className="is-highlighted">{selectedCategory.name}</span>
-                    )}
                     {selectedService.isFeatured && <span>Featured</span>}
                     {selectedService.tags.slice(0, 3).map((tag) => (
                       <span key={tag}>{tag}</span>
                     ))}
                   </div>
                   <p className="eyebrow">Selected experience</p>
-                  <h2>{selectedService.name}</h2>
+                  <h2>{selectedCategory?.name ?? selectedService.name}</h2>
+                  {selectedCategory && (
+                    <p className="booking-embedded__details-service-name">
+                      {selectedService.name}
+                    </p>
+                  )}
                   <p className="booking-embedded__details-description">
                     {selectedService.description ||
                       selectedService.shortDescription ||
