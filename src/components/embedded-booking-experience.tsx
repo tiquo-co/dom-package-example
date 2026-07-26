@@ -355,22 +355,21 @@ export function EmbeddedBookingExperience() {
       <header className="booking-embedded__hero">
         <div className="page-shell booking-embedded__hero-inner">
           <div className="booking-embedded__hero-copy">
-            <p className="eyebrow">Service catalog · DOM package</p>
             <h1>
               Booking <em>Embedded</em>
             </h1>
             <p>
-              Explore the live service catalog in this custom interface. Tiquo takes over only
-              when it is time to choose availability, enter details and pay securely.
+              A fully custom booking experience powered by Tiquo with your own interface and your
+              own user journey.{" "}
+              <a
+                className="booking-embedded__hero-link"
+                href="https://docs.tiquo.co/en/docs/api-reference/dom-package/service-catalogs"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Find out more here
+              </a>
             </p>
-          </div>
-          <div className="booking-embedded__hero-note" aria-label="How this page works">
-            <span>01</span>
-            <p>Custom discovery</p>
-            <span>02</span>
-            <p>Locked service handoff</p>
-            <span>03</span>
-            <p>Secure booking & payment</p>
           </div>
         </div>
       </header>
@@ -403,10 +402,8 @@ export function EmbeddedBookingExperience() {
             <div className="booking-embedded__catalog">
               <div className="booking-embedded__section-heading">
                 <div>
-                  <p className="eyebrow">Live availability</p>
                   <h2>{catalog?.flow.name ?? "Choose an experience"}</h2>
                 </div>
-                {catalog?.flow.description && <p>{catalog.flow.description}</p>}
               </div>
 
               {catalogIsPending ? (
@@ -473,7 +470,6 @@ export function EmbeddedBookingExperience() {
                     <span>
                       {filteredServices.length} service{filteredServices.length === 1 ? "" : "s"}
                     </span>
-                    <small>Fetched from Tiquo</small>
                   </div>
 
                   {filteredServices.length > 0 ? (
@@ -507,12 +503,6 @@ export function EmbeddedBookingExperience() {
                                 </span>
                               )}
                               <h3>{service.name}</h3>
-                              <p>
-                                {service.shortDescription ||
-                                  service.description ||
-                                  serviceCategory?.description ||
-                                  "Discover this bookable experience."}
-                              </p>
                               <div className="booking-embedded__service-meta">
                                 <div>
                                   <small>From</small>
