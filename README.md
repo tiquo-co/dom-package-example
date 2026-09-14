@@ -57,8 +57,8 @@ dom-package-example/
 ├── src/
 │   ├── app/                       # App Router pages and global styles
 │   │   ├── booking/               # Booking widget example
-│   │   ├── booking-embedded/      # Service Catalog (service), calendar-first
-│   │   ├── service-catalog-calendar/ # Service Catalog (calendar)
+│   │   ├── service-catalog-calendar/ # Service Catalog (calendar), calendar-first
+│   │   ├── service-catalog-service/  # Service Catalog (service)
 │   ├── form/                  # Embedded Tiquo form
 │   │   ├── membership/            # Membership options
 │   │   ├── order-pick-up/         # Collection ordering flow
