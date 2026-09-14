@@ -13,6 +13,8 @@ import {
   type CSSProperties,
 } from "react";
 
+import { ServiceAvailabilityCalendar, type CalendarSelection } from "@/components/service-availability-calendar";
+
 import { useTiquo } from "@/components/tiquo-provider";
 
 const BOOKING_CONFIGURATION_ID = "870r7rby-qn3k-dfnm-mr83axe3";
@@ -137,7 +139,8 @@ function LoadingCatalog() {
   );
 }
 
-export function EmbeddedBookingExperience() {
+export function EmbeddedBookingExperience({ calendarFirst = false, variant = "service" }: { calendarFirst?: boolean; variant?: "service" | "calendar" }) {
+  const [calendarSelection, setCalendarSelection] = useState<CalendarSelection | null>(null);
   const { client, status, track } = useTiquo();
   const experienceRef = useRef<HTMLElement>(null);
   const embedContainerRef = useRef<HTMLDivElement>(null);
@@ -274,9 +277,9 @@ export function EmbeddedBookingExperience() {
           .filter(Boolean)
           .some((value) => value?.toLowerCase().includes(normalisedQuery));
 
-      return matchesCategory && matchesQuery;
+      return matchesCategory && matchesQuery && (!calendarFirst || Boolean(calendarSelection?.serviceIds.includes(service.id)));
     });
-  }, [activeCategory, catalog, categories, query]);
+  }, [activeCategory, catalog, categories, query, calendarFirst, calendarSelection]);
 
   const currency = selectedService?.currency ?? catalog?.currency ?? "GBP";
   const selectedCategory = selectedService
@@ -356,7 +359,7 @@ export function EmbeddedBookingExperience() {
         <div className="page-shell booking-embedded__hero-inner">
           <div className="booking-embedded__hero-copy">
             <h1>
-              Booking <em>Embedded</em>
+              Service Catalog <em>({variant})</em>
             </h1>
             <p>
               A fully custom booking experience powered by Tiquo with your own interface and your
@@ -398,13 +401,16 @@ export function EmbeddedBookingExperience() {
             ))}
           </ol>
 
-          {stage === "catalog" && (
-            <div className="booking-embedded__catalog">
+          <div className="booking-embedded__catalog" hidden={stage !== "catalog"}>
               <div className="booking-embedded__section-heading">
                 <div>
-                  <h2>{catalog?.flow.name ?? "Choose an experience"}</h2>
+                  <h2>{calendarFirst ? "Your next experience" : catalog?.flow.name ?? "Choose an experience"}</h2>
                 </div>
               </div>
+
+              {calendarFirst && (
+                <ServiceAvailabilityCalendar bookingConfigId={BOOKING_CONFIGURATION_ID} selection={calendarSelection} onSelect={setCalendarSelection} />
+              )}
 
               {catalogIsPending ? (
                 <LoadingCatalog />
@@ -427,7 +433,7 @@ export function EmbeddedBookingExperience() {
                     </button>
                   )}
                 </div>
-              ) : catalog ? (
+              ) : catalog && (!calendarFirst || calendarSelection) ? (
                 <>
                   <div className="booking-embedded__controls">
                     <div className="booking-embedded__categories" aria-label="Service categories">
@@ -437,7 +443,7 @@ export function EmbeddedBookingExperience() {
                         aria-pressed={activeCategory === "all"}
                         onClick={() => setActiveCategory("all")}
                       >
-                        All <span>{catalog.services.length}</span>
+                        All <span>{calendarFirst ? catalog.services.filter((service) => calendarSelection?.serviceIds.includes(service.id)).length : catalog.services.length}</span>
                       </button>
                       {categories.map((category) => (
                         <button
@@ -551,8 +557,7 @@ export function EmbeddedBookingExperience() {
                   )}
                 </>
               ) : null}
-            </div>
-          )}
+          </div>
 
           {stage === "details" && selectedService && (
             <div className="booking-embedded__details">
