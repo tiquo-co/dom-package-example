@@ -4,10 +4,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { BrandMark } from "@/components/brand-mark";
+import { SavedCardsPanel } from "@/components/saved-cards-panel";
 import { useTiquo } from "@/components/tiquo-provider";
 import { downloadReceiptFile } from "@/lib/receipt-download";
 
-type PortalTab = "overview" | "bookings" | "orders";
+type PortalTab = "overview" | "bookings" | "orders" | "cards";
 
 function SidebarIcon({ tab }: Readonly<{ tab: PortalTab }>) {
   if (tab === "overview") {
@@ -27,6 +28,15 @@ function SidebarIcon({ tab }: Readonly<{ tab: PortalTab }>) {
         <path d="M7 3v3M17 3v3M4 9h16" />
         <rect x="3.5" y="4.5" width="17" height="16" rx="2" />
         <path d="M8 13h3M13 13h3M8 17h3" />
+      </svg>
+    );
+  }
+
+  if (tab === "cards") {
+    return (
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="5.5" width="18" height="13" rx="2" />
+        <path d="M3 10h18M7 14.5h4" />
       </svg>
     );
   }
@@ -511,7 +521,7 @@ export function MemberPortal() {
       <div className="member-shell">
         <aside className="member-sidebar">
           <nav aria-label="Member profile sections">
-            {(["overview", "bookings", "orders"] as const).map((item) => (
+            {(["overview", "bookings", "orders", "cards"] as const).map((item) => (
               <button
                 key={item}
                 type="button"
@@ -691,6 +701,8 @@ export function MemberPortal() {
               </div>
             </section>
           )}
+
+          {tab === "cards" && <SavedCardsPanel />}
         </section>
       </div>
 
