@@ -2346,6 +2346,214 @@ a {
   font-size: 10px;
 }
 
+.saved-cards__intro {
+  margin: -8px 0 22px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.saved-cards__notice {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  background: rgba(215, 255, 117, 0.45);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.saved-cards__empty {
+  border: 1px solid var(--line);
+}
+
+.saved-cards__list {
+  border-bottom: 1px solid var(--line);
+}
+
+.saved-card-row {
+  min-height: 128px;
+  padding: 22px 4px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr) auto 230px;
+  gap: 24px;
+  align-items: center;
+}
+
+.saved-card-visual {
+  width: 148px;
+  aspect-ratio: 1.586;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.saved-card-row.is-default .saved-card-visual {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+}
+
+.saved-card-visual span {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.saved-card-visual strong {
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+}
+
+.saved-card-row__details > span {
+  color: var(--muted);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.saved-card-row h3 {
+  margin: 7px 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.saved-card-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.saved-card-row p.is-expired {
+  color: #a22b2b;
+}
+
+.saved-card-row__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
+.saved-card-row__actions .receipt-download {
+  background: transparent;
+}
+
+.saved-card-row__actions .receipt-download:hover:not(:disabled) {
+  background: var(--ink);
+}
+
+.saved-card-row__link {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 9px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.saved-card-row__link:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.saved-card-row__actions .saved-card-row__danger {
+  border-color: #a22b2b;
+  color: #a22b2b;
+}
+
+.saved-card-row__actions .saved-card-row__danger:hover:not(:disabled) {
+  background: #a22b2b;
+  color: var(--white);
+}
+
+.saved-cards__add {
+  margin-top: 26px;
+  border: 1px solid var(--line);
+}
+
+.saved-cards__form {
+  min-height: 360px;
+}
+
+.saved-cards__add-button {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 26px;
+  border: 1px dashed rgba(23, 25, 22, 0.35);
+  background: transparent;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.saved-cards__add-button:hover:not(:disabled) {
+  border-style: solid;
+  border-color: var(--ink);
+  background: var(--acid);
+}
+
+.saved-cards__add-button:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+
+.saved-cards__add-button svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 1100px) {
+  .saved-card-row {
+    grid-template-columns: 112px minmax(0, 1fr) auto;
+  }
+
+  .saved-card-visual {
+    width: 112px;
+  }
+
+  .saved-card-row__actions {
+    grid-column: 2 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .saved-card-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+  }
+
+  .saved-card-visual {
+    grid-column: 1 / -1;
+    width: min(100%, 200px);
+  }
+
+  .saved-card-row__actions {
+    grid-column: 1 / -1;
+  }
+}
+
 @media (max-width: 1240px) {
   .member-shell {
     grid-template-columns: 72px 1fr;

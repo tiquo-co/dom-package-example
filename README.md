@@ -12,7 +12,7 @@
   <p>
     <a href="https://www.tiquo.co"><img src="https://img.shields.io/badge/Website-tiquo.co-blue" alt="Website"></a>
     <a href="https://docs.tiquo.co/en/docs/api-reference/dom-package/overview"><img src="https://img.shields.io/badge/Docs-DOM_Package-green" alt="DOM Package documentation"></a>
-    <a href="https://www.npmjs.com/package/@tiquo/dom-package"><img src="https://img.shields.io/badge/%40tiquo%2Fdom--package-1.9.1-6F42C1" alt="@tiquo/dom-package 1.9.1"></a>
+    <a href="https://www.npmjs.com/package/@tiquo/dom-package"><img src="https://img.shields.io/badge/%40tiquo%2Fdom--package-1.12.0-6F42C1" alt="@tiquo/dom-package 1.12.0"></a>
     <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16.2-black" alt="Next.js 16.2"></a>
     <a href="https://react.dev/"><img src="https://img.shields.io/badge/React-19.2-149ECA" alt="React 19.2"></a>
     <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-6.0-blue" alt="TypeScript 6.0"></a>
@@ -45,7 +45,7 @@ The visual direction takes broad inspiration from the supplied Webflow reference
 | --------- | ------------------------------------------------------------------------------------------- |
 | Web       | Next.js `16.2.10` App Router                                                                |
 | UI        | React and React DOM `19.2.7`                                                                |
-| Tiquo SDK | `@tiquo/dom-package` `1.9.1` for authentication, customer data, bookings, orders and events |
+| Tiquo SDK | `@tiquo/dom-package` `1.12.0` for authentication, customer data, bookings, orders, saved cards and events |
 | Language  | TypeScript `6.0.3`                                                                          |
 | Quality   | ESLint `9.39.5` with Next.js Core Web Vitals and TypeScript rules                           |
 
@@ -108,6 +108,7 @@ When the public key is not configured, every page displays a slim configuration 
 
 - `src/components/tiquo-provider.tsx` creates one browser-only SDK instance, restores the session, subscribes to authentication changes, enables analytics, synchronizes tabs and destroys listeners during cleanup.
 - `src/components/member-portal.tsx` implements email OTP login, session-aware UI, upcoming bookings, order history and wallet ticket links as native React components.
+- `src/components/saved-cards-panel.tsx` lists the member's saved cards with `getPaymentMethods()`, changes the default or removes a card with `setDefaultPaymentMethod()` / `removePaymentMethod()`, and adds a card through `embedCardForm()`, so card numbers are only entered in Tiquo's secure iframe.
 - `src/components/trackable-link.tsx` demonstrates custom first-party analytics events while the SDK records page views automatically.
 - `src/app/profile/page.tsx` is statically rendered and hands interactive customer work to client components, keeping the public marketing page server-rendered by default.
 
@@ -137,4 +138,5 @@ npm run build
 
 - [DOM Package overview](https://docs.tiquo.co/en/docs/api-reference/dom-package/overview)
 - [DOM Package setup guide](https://docs.tiquo.co/en/docs/api-reference/dom-package/setup)
+- [DOM Package saved cards](https://docs.tiquo.co/en/docs/api-reference/dom-package/saved-cards)
 - [`@tiquo/dom-package` on npm](https://www.npmjs.com/package/@tiquo/dom-package)
